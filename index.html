@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blessed Cake Pâtisserie | Gâteaux personnalisés à Lubumbashi</title>
+  <meta name="description" content="Blessed Cake Pâtisserie à Lubumbashi : gâteaux d’anniversaire, mariage, cupcakes, bento cakes et créations personnalisées sur commande.">
+  <meta name="keywords" content="Blessed Cake, pâtisserie Lubumbashi, gâteau anniversaire Lubumbashi, gâteau mariage Lubumbashi, cupcakes Lubumbashi, gâteau personnalisé Lubumbashi">
+  <meta name="author" content="Blessed Cake Pâtisserie">
+  <meta name="theme-color" content="#e76f92">
+  <meta property="og:title" content="Blessed Cake Pâtisserie | Lubumbashi">
+  <meta property="og:description" content="Des gâteaux élégants, moelleux et personnalisés pour vos plus beaux moments.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1200&q=80">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root{
+      --rose-primary:#e76f92;
+      --rose-light:#f7a8be;
+      --rose-pale:#fce8ef;
+      --rose-soft:#ffeef4;
+      --rose-deep:#c4556f;
+      --cream:#fff8f5;
+      --white:#ffffff;
+      --text-dark:#2d1c24;
+      --text-mid:#6b4a56;
+      --text-light:#a07585;
+      --line:rgba(231,111,146,.16);
+      --shadow-sm:0 8px 24px rgba(231,111,146,.10);
+      --shadow-md:0 16px 42px rgba(231,111,146,.16);
+      --shadow-lg:0 26px 80px rgba(196,85,111,.24);
+      --radius-sm:14px;
+      --radius-md:22px;
+      --radius-lg:34px;
+      --transition:.28s ease;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    img{width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .container{width:min(1160px,calc(100% - 34px));margin-inline:auto}
+    .page{display:none;min-height:100vh;padding-top:78px;animation:pageIn .35s ease both}
+    .page.active{display:block}
+    @keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .navbar{position:fixed;inset:0 0 auto 0;height:78px;z-index:1000;background:rgba(255,248,245,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;border:0;background:transparent;text-align:left;color:var(--text-dark)}
+    .brand-icon{width:46px;height:46px;border-radius:18px;background:linear-gradient(135deg,var(--rose-primary),var(--rose-deep));display:grid;place-items:center;color:#fff;box-shadow:0 14px 30px rgba(231,111,146,.28)}
+    .brand strong{display:block;font-family:"Playfair Display",serif;font-size:1.18rem;line-height:1.05;letter-spacing:-.02em}
+    .brand span{display:block;color:var(--rose-primary);font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+    .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
+    .nav-link{border:0;background:transparent;color:var(--text-mid);font-size:.9rem;font-weight:800;border-radius:999px;padding:10px 14px;transition:var(--transition)}
+    .nav-link:hover,.nav-link.active{background:var(--white);color:var(--rose-primary);box-shadow:var(--shadow-sm)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .menu-btn{display:none;width:46px;height:46px;border-radius:16px;border:1px solid var(--line);background:var(--white);color:var(--text-dark);align-items:center;justify-content:center}
+    .mobile-panel{display:none;position:fixed;top:88px;left:17px;right:17px;z-index:999;background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--shadow-lg);border-radius:26px;padding:14px}
+    .mobile-panel.open{display:block;animation:pageIn .22s ease both}
+    .mobile-panel .nav-link{width:100%;display:flex;justify-content:flex-start;text-align:left;margin:2px 0}
+    .mobile-panel .btn{width:100%;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;border:0;border-radius:999px;padding:0 20px;font-weight:900;white-space:nowrap;transition:var(--transition)}
+    .btn i,.btn svg{width:18px;height:18px}
+    .btn-primary{background:linear-gradient(135deg,var(--rose-primary),var(--rose-deep));color:#fff;box-shadow:0 14px 28px rgba(231,111,146,.28)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px rgba(231,111,146,.34)}
+    .btn-light{background:var(--white);color:var(--rose-primary);border:1px solid var(--line)}
+    .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+    .btn-dark{background:var(--text-dark);color:#fff}
+    .btn-dark:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(45,28,36,.22)}
+    .section{padding:86px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--rose-pale);color:var(--rose-primary);border-radius:999px;padding:8px 13px;font-size:.74rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin-bottom:16px}
+    .eyebrow i{width:15px;height:15px}
+    .title{font-family:"Playfair Display",serif;font-size:clamp(2.25rem,5.7vw,5.1rem);line-height:.95;letter-spacing:-.045em;color:var(--text-dark)}
+    .title span{color:var(--rose-primary);font-style:italic}
+    .subtitle{margin-top:18px;color:var(--text-mid);font-size:clamp(.98rem,2vw,1.12rem);max-width:630px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
+    .section-head .title{font-size:clamp(2rem,4vw,3.35rem)}
+    .hero-main{position:relative;min-height:calc(100vh - 78px);display:grid;align-items:center;overflow:hidden;background:linear-gradient(90deg,rgba(45,28,36,.72),rgba(196,85,111,.18)),url("https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;color:#fff}
+    .hero-main:after{content:"";position:absolute;inset:auto -160px -160px auto;width:430px;height:430px;border-radius:50%;background:rgba(247,168,190,.25);filter:blur(4px)}
+    .hero-main .container{position:relative;z-index:1}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .82fr;align-items:center;gap:54px;padding:72px 0}
+    .hero-main .title{color:#fff;text-shadow:0 18px 60px rgba(0,0,0,.24)}
+    .hero-main .subtitle{color:rgba(255,255,255,.84)}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-points{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;max-width:620px}
+    .hero-point{padding:16px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.12);backdrop-filter:blur(16px);border-radius:22px}
+    .hero-point strong{display:block;color:#fff;font-size:1.05rem}
+    .hero-point span{display:block;color:rgba(255,255,255,.74);font-size:.78rem;font-weight:700;margin-top:3px}
+    .hero-card{background:rgba(255,255,255,.92);color:var(--text-dark);border-radius:34px;padding:18px;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.38)}
+    .hero-card-img{height:365px;border-radius:25px;overflow:hidden;margin-bottom:16px}
+    .hero-card-img img{height:100%;object-fit:cover}
+    .hero-card h3{font-family:"Playfair Display",serif;font-size:1.75rem;line-height:1;margin-bottom:8px}
+    .hero-card p{color:var(--text-mid);font-size:.92rem}
+    .quick-card{margin-top:-42px;position:relative;z-index:10;background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--shadow-lg);border-radius:30px;padding:18px;display:grid;grid-template-columns:1.15fr 1fr 1fr auto;gap:14px;align-items:end}
+    .field label{display:block;margin:0 0 7px 7px;color:var(--text-mid);font-size:.78rem;font-weight:900}
+    .field input,.field select,.field textarea{width:100%;border:1px solid rgba(107,74,86,.18);background:#fff;color:var(--text-dark);border-radius:17px;min-height:50px;padding:0 14px;outline:none;transition:var(--transition)}
+    .field textarea{min-height:112px;padding:14px;resize:vertical}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(231,111,146,.75);box-shadow:0 0 0 4px rgba(231,111,146,.12)}
+    .page-hero{position:relative;min-height:430px;display:grid;align-items:end;padding:74px 0;overflow:hidden;background:linear-gradient(90deg,rgba(45,28,36,.74),rgba(196,85,111,.20)),var(--hero-bg) center/cover no-repeat;color:#fff}
+    .page-hero .container{position:relative;z-index:1}
+    .page-hero .title{color:#fff;max-width:820px}
+    .page-hero .subtitle{color:rgba(255,255,255,.82)}
+    .page-hero:after{content:"";position:absolute;inset:auto -120px -170px auto;width:350px;height:350px;border-radius:50%;background:rgba(255,238,244,.25)}
+    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .benefit-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);border-radius:27px;padding:24px;transition:var(--transition)}
+    .benefit-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+    .icon-box{width:54px;height:54px;border-radius:20px;background:var(--rose-pale);color:var(--rose-primary);display:grid;place-items:center;margin-bottom:17px}
+    .icon-box i{width:24px;height:24px}
+    .benefit-card h3{font-family:"Playfair Display",serif;font-size:1.28rem;margin-bottom:8px}
+    .benefit-card p{color:var(--text-mid);font-size:.92rem}
+    .showcase{background:#fff}
+    .showcase-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:30px;align-items:stretch}
+    .showcase-text{background:linear-gradient(135deg,var(--text-dark),#553140);color:#fff;border-radius:34px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:560px;overflow:hidden;position:relative}
+    .showcase-text:after{content:"";position:absolute;right:-110px;bottom:-140px;width:300px;height:300px;border-radius:50%;background:rgba(247,168,190,.28)}
+    .showcase-text .title{color:#fff;font-size:clamp(2rem,4vw,3.35rem)}
+    .showcase-text p{color:rgba(255,255,255,.72);margin-top:16px;position:relative;z-index:1}
+    .steps{display:grid;gap:14px;margin-top:26px;position:relative;z-index:1}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:13px}
+    .step-number{width:44px;height:44px;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.13);color:#fff;font-weight:900}
+    .step strong{display:block;color:#fff}
+    .step span{display:block;color:rgba(255,255,255,.62);font-size:.88rem;margin-top:2px}
+    .showcase-photo{border-radius:34px;overflow:hidden;box-shadow:var(--shadow-lg);min-height:560px}
+    .showcase-photo img{height:100%;object-fit:cover}
+    .catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+    .filter-group{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:#fff;color:var(--rose-primary);border-radius:999px;padding:10px 14px;font-weight:900;font-size:.86rem;transition:var(--transition)}
+    .chip:hover,.chip.active{background:var(--rose-primary);color:#fff;border-color:var(--rose-primary)}
+    .search-box{position:relative;min-width:min(100%,310px)}
+    .search-box i{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text-light)}
+    .search-box input{padding-left:43px}
+    .catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .product-card{background:#fff;border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition)}
+    .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+    .product-image{height:275px;position:relative;overflow:hidden}
+    .product-image img{height:100%;object-fit:cover;transition:.55s ease}
+    .product-card:hover .product-image img{transform:scale(1.05)}
+    .badge{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);color:var(--rose-primary);border-radius:999px;padding:8px 12px;font-size:.73rem;font-weight:900;box-shadow:var(--shadow-sm)}
+    .product-content{padding:20px}
+    .product-content h3{font-family:"Playfair Display",serif;font-size:1.6rem;line-height:1.05;margin-bottom:8px}
+    .product-content p{color:var(--text-mid);font-size:.9rem;min-height:58px}
+    .product-meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:var(--cream);color:var(--text-mid);font-size:.75rem;font-weight:800;padding:7px 10px}
+    .pill i{width:14px;height:14px;color:var(--rose-primary)}
+    .product-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .empty-state{display:none;background:#fff;border:1px dashed var(--rose-light);border-radius:24px;padding:28px;text-align:center;color:var(--text-mid)}
+    .order-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+    .order-card,.summary-card,.contact-card{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--shadow-sm);border-radius:34px;padding:26px}
+    .order-card h2,.summary-card h2,.contact-card h2{font-family:"Playfair Display",serif;font-size:2rem;line-height:1.05;margin-bottom:12px}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .full{grid-column:1/-1}
+    .summary-card{position:sticky;top:102px}
+    .estimate-box{margin:18px 0;border-radius:25px;padding:20px;background:linear-gradient(135deg,rgba(231,111,146,.12),rgba(252,232,239,.74));border:1px solid var(--line)}
+    .estimate-box span{display:block;color:var(--text-mid);font-size:.82rem;font-weight:900}
+    .estimate-box strong{display:block;font-size:2.45rem;letter-spacing:-.05em;margin-top:3px;color:var(--text-dark)}
+    .summary-line{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--text-mid)}
+    .summary-line strong{color:var(--text-dark);text-align:right}
+    .availability{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:var(--cream);border-radius:20px;padding:14px;margin:12px 0;color:var(--text-mid)}
+    .availability i{width:20px;height:20px;color:var(--rose-primary);flex:0 0 auto;margin-top:2px}
+    .availability.good{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.18)}
+    .availability.warn{background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.20)}
+    .availability.bad{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.20)}
+    .availability.bad i{color:#ef4444}.availability.good i{color:#25a75b}.availability.warn i{color:#d78b09}
+    .note{color:var(--text-mid);font-size:.83rem;margin-top:12px}
+    .generated-message{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;color:var(--text-mid);font-size:.86rem;max-height:230px;overflow:auto;white-space:pre-wrap}
+    .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:30px;align-items:stretch}
+    .contact-details{display:grid;gap:14px;margin-top:22px}
+    .contact-row{display:flex;gap:14px;align-items:flex-start;background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:16px}
+    .contact-row i{width:22px;height:22px;color:var(--rose-primary);flex:0 0 auto;margin-top:2px}
+    .contact-row strong{display:block;color:var(--text-dark)}
+    .contact-row span,.contact-row a{display:block;color:var(--text-mid);font-size:.92rem}
+    .contact-visual{border-radius:34px;overflow:hidden;box-shadow:var(--shadow-lg);min-height:535px;position:relative}
+    .contact-visual img{height:100%;object-fit:cover}
+    .contact-visual-card{position:absolute;left:22px;right:22px;bottom:22px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);border-radius:24px;padding:20px}
+    .contact-visual-card strong{display:block;font-size:1.1rem;margin-bottom:6px}.contact-visual-card span{color:var(--text-mid)}
+    .cta{padding:74px 0;background:linear-gradient(135deg,var(--rose-primary),var(--rose-deep));color:#fff;overflow:hidden}
+    .cta-card{display:flex;align-items:center;justify-content:space-between;gap:26px}.cta .title{color:#fff;font-size:clamp(2rem,4vw,3.3rem)}.cta p{color:rgba(255,255,255,.82);max-width:560px;margin-top:12px}
+    .footer{background:var(--text-dark);color:rgba(255,255,255,.66);padding:34px 0}.footer-grid{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}.footer .brand strong{color:#fff}.footer .brand span{color:var(--rose-light)}.footer-links{display:flex;gap:14px;flex-wrap:wrap}.footer-links button{background:transparent;border:0;color:rgba(255,255,255,.62);font-weight:800}.footer-links button:hover{color:#fff}
+    .fixed-order{position:fixed;right:18px;bottom:18px;z-index:900;width:60px;height:60px;border-radius:22px;background:#25D366;color:#fff;border:0;box-shadow:0 18px 38px rgba(37,211,102,.35);display:grid;place-items:center;transition:var(--transition)}
+    .fixed-order:hover{transform:translateY(-4px)}.fixed-order i{width:28px;height:28px}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--text-dark);color:#fff;padding:13px 18px;border-radius:999px;z-index:2000;box-shadow:var(--shadow-lg);font-weight:800;font-size:.88rem;transition:.3s ease;max-width:calc(100% - 34px);text-align:center}.toast.show{transform:translate(-50%,0)}
+    @media(max-width:1040px){.nav-links,.nav-actions{display:none}.menu-btn{display:flex}.hero-grid,.showcase-grid,.order-layout,.contact-grid{grid-template-columns:1fr}.hero-card{max-width:560px}.quick-card{grid-template-columns:repeat(2,1fr)}.quick-card .btn{grid-column:1/-1}.benefit-grid{grid-template-columns:repeat(2,1fr)}.catalog-grid{grid-template-columns:repeat(2,1fr)}.summary-card{position:static}.showcase-text,.showcase-photo{min-height:470px}}
+    @media(max-width:720px){.container{width:min(100% - 28px,1160px)}.page{padding-top:72px}.navbar,.nav-inner{height:72px}.brand-icon{width:42px;height:42px;border-radius:15px}.brand strong{font-size:1.02rem}.brand span{font-size:.62rem}.hero-main{min-height:auto}.hero-grid{padding:52px 0 72px;gap:28px}.hero-points{grid-template-columns:1fr}.hero-card-img{height:285px}.quick-card{grid-template-columns:1fr;margin-top:-28px}.section{padding:64px 0}.section-head{display:block}.section-head .subtitle{margin-top:12px}.benefit-grid,.catalog-grid,.form-grid{grid-template-columns:1fr}.page-hero{min-height:360px;padding:58px 0}.product-actions{grid-template-columns:1fr}.cta-card{display:block}.cta .btn{margin-top:24px;width:100%}.footer-grid{display:block}.footer-links{margin-top:20px}.fixed-order{width:54px;height:54px;border-radius:19px}.contact-visual{min-height:390px}}
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <button class="brand" type="button" data-page="home" aria-label="Blessed Cake Pâtisserie">
+        <span class="brand-icon"><i data-lucide="cake-slice"></i></span>
+        <span><strong>Blessed Cake</strong><span>Pâtisserie</span></span>
+      </button>
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><button class="nav-link active" type="button" data-page="home">Accueil</button></li>
+          <li><button class="nav-link" type="button" data-page="catalog">Catalogue</button></li>
+          <li><button class="nav-link" type="button" data-page="order">Estimation</button></li>
+          <li><button class="nav-link" type="button" data-page="contact">Contact</button></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-light" type="button" data-page="catalog"><i data-lucide="image"></i>Modèles</button>
+        <button class="btn btn-primary" type="button" data-page="order"><i data-lucide="shopping-bag"></i>Commander</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Ouvrir le menu"><i data-lucide="menu"></i></button>
+    </div>
+  </header>
+  <div class="mobile-panel" id="mobilePanel">
+    <button class="nav-link active" type="button" data-page="home">Accueil</button>
+    <button class="nav-link" type="button" data-page="catalog">Catalogue</button>
+    <button class="nav-link" type="button" data-page="order">Estimation</button>
+    <button class="nav-link" type="button" data-page="contact">Contact</button>
+    <button class="btn btn-primary" type="button" data-page="order"><i data-lucide="shopping-bag"></i>Préparer ma commande</button>
+  </div>
+
+  <main>
+    <section class="page active" id="page-home">
+      <div class="hero-main">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow"><i data-lucide="sparkles"></i>Lubumbashi · Sur commande</span>
+            <h1 class="title">Des gâteaux qui rendent vos moments <span>inoubliables.</span></h1>
+            <p class="subtitle">Gâteaux d’anniversaire, mariage, cupcakes, bento cakes et créations personnalisées préparés avec soin pour vos célébrations.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="button" data-page="order"><i data-lucide="calculator"></i>Estimer mon gâteau</button>
+              <button class="btn btn-light" type="button" data-page="catalog"><i data-lucide="images"></i>Voir les modèles</button>
+            </div>
+            <div class="hero-points">
+              <div class="hero-point"><strong>2 à 3 jours</strong><span>Délai conseillé</span></div>
+              <div class="hero-point"><strong>Sur mesure</strong><span>Thème, couleur, message</span></div>
+              <div class="hero-point"><strong>Lubumbashi</strong><span>Retrait ou livraison</span></div>
+            </div>
+          </div>
+          <aside class="hero-card">
+            <div class="hero-card-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85" alt="Gâteau décoré avec crème rose"></div>
+            <h3>Une douceur pensée pour votre événement</h3>
+            <p>Choisissez un modèle, précisez votre thème et recevez une estimation avant de confirmer les détails.</p>
+          </aside>
+        </div>
+      </div>
+      <div class="container quick-card" aria-label="Accès rapide à la commande">
+        <div class="field">
+          <label for="quickCake">Type de gâteau</label>
+          <select id="quickCake">
+            <option value="anniversaire">Anniversaire</option>
+            <option value="mariage">Mariage</option>
+            <option value="bento">Bento cake</option>
+            <option value="cupcakes">Cupcakes</option>
+            <option value="number">Number cake</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="quickDate">Date souhaitée</label>
+          <input id="quickDate" type="date">
+        </div>
+        <div class="field">
+          <label for="quickTheme">Thème ou couleur</label>
+          <input id="quickTheme" type="text" placeholder="Rose, doré, football...">
+        </div>
+        <button class="btn btn-primary" type="button" id="quickStart"><i data-lucide="arrow-right"></i>Continuer</button>
+      </div>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow"><i data-lucide="heart"></i>Nos attentions</span>
+              <h2 class="title">Beau, bon et préparé avec précision.</h2>
+            </div>
+            <p class="subtitle">Chaque commande est ajustée selon l’événement, le goût, le format, le thème et le délai disponible.</p>
+          </div>
+          <div class="benefit-grid">
+            <article class="benefit-card"><div class="icon-box"><i data-lucide="cake"></i></div><h3>Créations personnalisées</h3><p>Couleurs, prénom, âge, thème, message et décoration adaptés à votre occasion.</p></article>
+            <article class="benefit-card"><div class="icon-box"><i data-lucide="calendar-check"></i></div><h3>Commande organisée</h3><p>Les informations essentielles sont envoyées directement pour éviter les oublis.</p></article>
+            <article class="benefit-card"><div class="icon-box"><i data-lucide="badge-dollar-sign"></i></div><h3>Estimation claire</h3><p>Un prix indicatif s’affiche selon le type, les étages, la finition et la livraison.</p></article>
+            <article class="benefit-card"><div class="icon-box"><i data-lucide="truck"></i></div><h3>Retrait ou livraison</h3><p>Votre gâteau est préparé pour le moment, l’adresse et l’heure indiqués.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="section showcase">
+        <div class="container showcase-grid">
+          <div class="showcase-text">
+            <div>
+              <span class="eyebrow"><i data-lucide="wand-sparkles"></i>Commande simple</span>
+              <h2 class="title">Votre gâteau commence par une idée.</h2>
+              <p>Quelques détails suffisent pour préparer une proposition adaptée à votre budget et à votre événement.</p>
+              <div class="steps">
+                <div class="step"><span class="step-number">1</span><div><strong>Choisir un modèle</strong><span>Catalogue illustratif ou idée personnalisée.</span></div></div>
+                <div class="step"><span class="step-number">2</span><div><strong>Estimer le prix</strong><span>Type, étages, décoration, délai et livraison.</span></div></div>
+                <div class="step"><span class="step-number">3</span><div><strong>Envoyer la demande</strong><span>Tous les détails partent ensemble pour confirmation.</span></div></div>
+              </div>
+            </div>
+            <button class="btn btn-light" type="button" data-page="order"><i data-lucide="send"></i>Commencer maintenant</button>
+          </div>
+          <div class="showcase-photo"><img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=1000&q=85" alt="Gâteau de fête avec décoration rose"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-catalog">
+      <div class="page-hero" style="--hero-bg:url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=1800&q=85')">
+        <div class="container">
+          <span class="eyebrow"><i data-lucide="images"></i>Catalogue</span>
+          <h1 class="title">Quelques modèles pour inspirer votre commande.</h1>
+          <p class="subtitle">Une sélection simple par catégorie. Les autres inspirations peuvent être partagées après l’envoi de votre demande.</p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="container">
+          <div class="catalog-toolbar">
+            <div class="filter-group" id="filters"></div>
+            <div class="field search-box">
+              <i data-lucide="search"></i>
+              <input id="searchInput" type="search" placeholder="Rechercher un modèle">
+            </div>
+          </div>
+          <div class="catalog-grid" id="catalogGrid"></div>
+          <div class="empty-state" id="emptyState">Aucun modèle trouvé pour cette recherche.</div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-order">
+      <div class="page-hero" style="--hero-bg:url('https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=1800&q=85')">
+        <div class="container">
+          <span class="eyebrow"><i data-lucide="calculator"></i>Estimation & commande</span>
+          <h1 class="title">Préparez votre gâteau avec les bons détails.</h1>
+          <p class="subtitle">Le prix affiché est indicatif. La confirmation finale dépend du design, du délai et des éléments décoratifs.</p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="container order-layout">
+          <form class="order-card" id="orderForm">
+            <h2>Votre demande</h2>
+            <p class="subtitle" style="margin-bottom:20px">Renseignez les informations de l’événement avant l’envoi.</p>
+            <div class="form-grid">
+              <div class="field"><label for="cakeModel">Gâteau choisi</label><select id="cakeModel" required></select></div>
+              <div class="field"><label for="cakeType">Type de gâteau</label><select id="cakeType" required><option value="anniversaire">Anniversaire</option><option value="mariage">Mariage</option><option value="bento">Bento cake</option><option value="cupcakes">Cupcakes</option><option value="number">Number cake</option><option value="corporate">Événement professionnel</option><option value="autre">Autre création</option></select></div>
+              <div class="field"><label for="eventDate">Date de l’événement</label><input id="eventDate" type="date" required></div>
+              <div class="field"><label for="eventTime">Heure souhaitée</label><input id="eventTime" type="time" required></div>
+              <div class="field"><label for="personName">Nom</label><input id="personName" type="text" placeholder="Votre nom" required></div>
+              <div class="field"><label for="phone">Téléphone</label><input id="phone" type="tel" placeholder="+243..." required></div>
+              <div class="field"><label for="eventName">Événement organisé</label><input id="eventName" type="text" placeholder="Anniversaire, mariage, remise de diplôme..." required></div>
+              <div class="field"><label for="age">Âge ou mention</label><input id="age" type="text" placeholder="18 ans, Félicitations, Joyeux anniversaire..."></div>
+              <div class="field"><label for="servings">Nombre de parts</label><select id="servings"><option value="10">10 parts</option><option value="15">15 parts</option><option value="20">20 parts</option><option value="30">30 parts</option><option value="50">50 parts</option><option value="80">80 parts</option><option value="120">120 parts</option></select></div>
+              <div class="field"><label for="tiers">Nombre d’étages</label><select id="tiers"><option value="1">1 étage</option><option value="2">2 étages</option><option value="3">3 étages</option><option value="4">4 étages</option></select></div>
+              <div class="field"><label for="finish">Finition</label><select id="finish"><option value="simple">Simple et élégant</option><option value="theme">Thème personnalisé</option><option value="premium">Décoration premium</option><option value="luxury">Création détaillée</option></select></div>
+              <div class="field"><label for="delivery">Livraison</label><select id="delivery"><option value="no">Retrait</option><option value="yes">Livraison à Lubumbashi</option></select></div>
+              <div class="field full" id="addressWrap" style="display:none"><label for="address">Adresse de livraison</label><input id="address" type="text" placeholder="Quartier, avenue, référence"></div>
+              <div class="field full"><label for="themeText">Modifications souhaitées</label><textarea id="themeText" placeholder="Couleurs, thème, parfum, prénom, photo, message, inspirations..."></textarea></div>
+            </div>
+            <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px"><i data-lucide="send"></i>Envoyer la demande sur WhatsApp</button>
+          </form>
+          <aside class="summary-card">
+            <h2>Estimation</h2>
+            <div class="estimate-box"><span>Prix indicatif</span><strong id="estimateAmount">$25</strong></div>
+            <div id="availability" class="availability"><i data-lucide="calendar-clock"></i><div>Sélectionnez une date pour vérifier le délai de préparation.</div></div>
+            <div class="summary-line"><span>Modèle</span><strong id="sumModel">Signature rose</strong></div>
+            <div class="summary-line"><span>Type</span><strong id="sumType">Anniversaire</strong></div>
+            <div class="summary-line"><span>Parts</span><strong id="sumServings">10 parts</strong></div>
+            <div class="summary-line"><span>Étages</span><strong id="sumTiers">1 étage</strong></div>
+            <div class="summary-line"><span>Livraison</span><strong id="sumDelivery">Retrait</strong></div>
+            <p class="note">Le prix final est confirmé après vérification du design, des détails de décoration et de la disponibilité.</p>
+            <div class="generated-message" id="previewMessage"></div>
+          </aside>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-contact">
+      <div class="page-hero" style="--hero-bg:url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1800&q=85')">
+        <div class="container">
+          <span class="eyebrow"><i data-lucide="map-pin"></i>Contact</span>
+          <h1 class="title">Une célébration se prépare mieux avec les bons détails.</h1>
+          <p class="subtitle">Pour une commande personnalisée, l’estimation et le formulaire permettent d’envoyer toutes les informations en une seule fois.</p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="container contact-grid">
+          <div class="contact-card">
+            <h2>Blessed Cake Pâtisserie</h2>
+            <p class="subtitle">Gâteaux d’anniversaire, mariage, cupcakes, bento cakes et créations sur mesure à Lubumbashi.</p>
+            <div class="contact-details">
+              <div class="contact-row"><i data-lucide="phone"></i><div><strong>Téléphone & WhatsApp</strong><span>+243 991 003 260</span></div></div>
+              <div class="contact-row"><i data-lucide="mail"></i><div><strong>Email</strong><a href="mailto:blessedcake243@gmail.com">blessedcake243@gmail.com</a></div></div>
+              <div class="contact-row"><i data-lucide="instagram"></i><div><strong>Instagram</strong><span>@blessedcake243</span></div></div>
+              <div class="contact-row"><i data-lucide="map-pin"></i><div><strong>Ville</strong><span>Lubumbashi, RDC</span></div></div>
+              <div class="contact-row"><i data-lucide="clock"></i><div><strong>Réservation</strong><span>2 à 3 jours à l’avance conseillé.</span></div></div>
+            </div>
+            <div class="hero-actions"><button class="btn btn-primary" type="button" data-page="order"><i data-lucide="shopping-bag"></i>Préparer une commande</button><button class="btn btn-light" type="button" data-page="catalog"><i data-lucide="images"></i>Voir les modèles</button></div>
+          </div>
+          <div class="contact-visual">
+            <img src="https://images.unsplash.com/photo-1552689486-f6773047d19f?auto=format&fit=crop&w=1000&q=85" alt="Cupcakes décorés pour événement">
+            <div class="contact-visual-card"><strong>Commande personnalisée</strong><span>Type de gâteau, date, heure, thème, âge, livraison et message réunis dans une seule demande.</span></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <section class="cta">
+    <div class="container cta-card">
+      <div>
+        <h2 class="title">Un gâteau pour marquer le moment.</h2>
+        <p>Préparez votre demande avec les détails essentiels et recevez une confirmation adaptée à votre événement.</p>
+      </div>
+      <button class="btn btn-light" type="button" data-page="order"><i data-lucide="calculator"></i>Estimer maintenant</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <button class="brand" type="button" data-page="home">
+        <span class="brand-icon"><i data-lucide="cake-slice"></i></span>
+        <span><strong>Blessed Cake</strong><span>Pâtisserie</span></span>
+      </button>
+      <div class="footer-links"><button type="button" data-page="home">Accueil</button><button type="button" data-page="catalog">Catalogue</button><button type="button" data-page="order">Estimation</button><button type="button" data-page="contact">Contact</button></div>
+      <p>© 2026 Blessed Cake Pâtisserie. Lubumbashi.</p>
+    </div>
+  </footer>
+  <button class="fixed-order" type="button" data-page="order" aria-label="Préparer une commande"><i data-lucide="message-circle"></i></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const WHATSAPP_NUMBER = "243991003260";
+    const products = [
+      {id:"signature-rose",name:"Signature rose",cat:"anniversaire",type:"anniversaire",tag:"Anniversaire",price:25,servings:"10 à 15 parts",img:"https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=85",desc:"Gâteau doux et élégant avec finition rose, idéal pour une célébration raffinée."},
+      {id:"mariage-elegance",name:"Élégance mariage",cat:"mariage",type:"mariage",tag:"Mariage",price:85,servings:"50 parts et plus",img:"https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=85",desc:"Création chic pour mariage, dot, fiançailles et grands moments familiaux."},
+      {id:"bento-love",name:"Bento love",cat:"bento",type:"bento",tag:"Bento",price:20,servings:"1 à 4 parts",img:"https://images.unsplash.com/photo-1616690710400-a16d146927c5?auto=format&fit=crop&w=900&q=85",desc:"Petit gâteau personnalisé pour surprise, message tendre ou attention spéciale."},
+      {id:"cupcakes-party",name:"Cupcakes party",cat:"cupcakes",type:"cupcakes",tag:"Cupcakes",price:18,servings:"12 pièces",img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=900&q=85",desc:"Cupcakes décorés pour anniversaire, fête d’enfants, école ou réception."},
+      {id:"number-prestige",name:"Number cake",cat:"anniversaire",type:"number",tag:"Âge",price:35,servings:"12 à 20 parts",img:"https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=900&q=85",desc:"Gâteau en chiffre pour marquer un âge avec fruits, crème et décoration."},
+      {id:"graduation",name:"Graduation cake",cat:"evenement",type:"corporate",tag:"Cérémonie",price:45,servings:"20 parts",img:"https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=900&q=85",desc:"Création personnalisée pour remise de diplôme, réussite, entreprise ou cérémonie."},
+      {id:"kids-theme",name:"Thème enfant",cat:"anniversaire",type:"anniversaire",tag:"Enfant",price:32,servings:"15 à 20 parts",img:"https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=900&q=85",desc:"Gâteau coloré pour enfant avec thème, prénom, âge et détails décoratifs."},
+      {id:"choco-classic",name:"Choco classique",cat:"anniversaire",type:"anniversaire",tag:"Chocolat",price:28,servings:"10 à 15 parts",img:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=85",desc:"Gâteau chocolat moelleux avec finition gourmande et présentation soignée."},
+      {id:"autre-modele",name:"Création sur mesure",cat:"sur-mesure",type:"autre",tag:"Sur mesure",price:30,servings:"Selon besoin",img:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=85",desc:"Une idée précise, une couleur, une photo ou une inspiration à reproduire avec soin."}
+    ];
+    const categoryLabels = {all:"Tous",anniversaire:"Anniversaire",mariage:"Mariage",bento:"Bento",cupcakes:"Cupcakes",evenement:"Événement","sur-mesure":"Sur mesure"};
+    const basePrices = {anniversaire:25,mariage:80,bento:20,cupcakes:18,number:35,corporate:45,autre:30};
+    const typeLabels = {anniversaire:"Anniversaire",mariage:"Mariage",bento:"Bento cake",cupcakes:"Cupcakes",number:"Number cake",corporate:"Événement professionnel",autre:"Autre création"};
+    const pages = document.querySelectorAll(".page");
+    const pageButtons = document.querySelectorAll("[data-page]");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const mobilePanel = document.getElementById("mobilePanel");
+    const menuBtn = document.getElementById("menuBtn");
+    const filters = document.getElementById("filters");
+    const catalogGrid = document.getElementById("catalogGrid");
+    const searchInput = document.getElementById("searchInput");
+    const emptyState = document.getElementById("emptyState");
+    const cakeModel = document.getElementById("cakeModel");
+    const cakeType = document.getElementById("cakeType");
+    const eventDate = document.getElementById("eventDate");
+    const eventTime = document.getElementById("eventTime");
+    const personName = document.getElementById("personName");
+    const phone = document.getElementById("phone");
+    const eventName = document.getElementById("eventName");
+    const age = document.getElementById("age");
+    const servings = document.getElementById("servings");
+    const tiers = document.getElementById("tiers");
+    const finish = document.getElementById("finish");
+    const delivery = document.getElementById("delivery");
+    const address = document.getElementById("address");
+    const addressWrap = document.getElementById("addressWrap");
+    const themeText = document.getElementById("themeText");
+    const estimateAmount = document.getElementById("estimateAmount");
+    const sumModel = document.getElementById("sumModel");
+    const sumType = document.getElementById("sumType");
+    const sumServings = document.getElementById("sumServings");
+    const sumTiers = document.getElementById("sumTiers");
+    const sumDelivery = document.getElementById("sumDelivery");
+    const availability = document.getElementById("availability");
+    const previewMessage = document.getElementById("previewMessage");
+    const orderForm = document.getElementById("orderForm");
+    const toast = document.getElementById("toast");
+    let activeFilter = "all";
+
+    function showToast(text){toast.textContent=text;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2600)}
+    function openPage(page){pages.forEach(p=>p.classList.toggle("active",p.id===`page-${page}`));navLinks.forEach(link=>link.classList.toggle("active",link.dataset.page===page));mobilePanel.classList.remove("open");document.body.classList.remove("menu-open");window.scrollTo({top:0,behavior:"smooth"})}
+    pageButtons.forEach(btn=>btn.addEventListener("click",()=>openPage(btn.dataset.page)));
+    menuBtn.addEventListener("click",()=>{mobilePanel.classList.toggle("open");document.body.classList.toggle("menu-open",mobilePanel.classList.contains("open"))});
+
+    function renderFilters(){const cats=["all",...new Set(products.map(p=>p.cat))];filters.innerHTML=cats.map(cat=>`<button class="chip ${cat===activeFilter?"active":""}" type="button" data-filter="${cat}">${categoryLabels[cat]||cat}</button>`).join("");filters.querySelectorAll(".chip").forEach(btn=>btn.addEventListener("click",()=>{activeFilter=btn.dataset.filter;renderFilters();renderCatalog()}))}
+    function renderCatalog(){const query=(searchInput.value||"").toLowerCase().trim();const list=products.filter(p=>(activeFilter==="all"||p.cat===activeFilter)&&(`${p.name} ${p.tag} ${p.desc}`.toLowerCase().includes(query)));catalogGrid.innerHTML=list.map(p=>`<article class="product-card"><div class="product-image"><img src="${p.img}" alt="${p.name}"><span class="badge">${p.tag}</span></div><div class="product-content"><h3>${p.name}</h3><p>${p.desc}</p><div class="product-meta"><span class="pill"><i data-lucide="users"></i>${p.servings}</span><span class="pill"><i data-lucide="badge-dollar-sign"></i>À partir de $${p.price}</span></div><div class="product-actions"><button class="btn btn-primary" type="button" data-choose="${p.id}"><i data-lucide="shopping-bag"></i>Choisir</button><button class="btn btn-light" type="button" data-page="order"><i data-lucide="pen-line"></i>Personnaliser</button></div></div></article>`).join("");emptyState.style.display=list.length?"none":"block";catalogGrid.querySelectorAll("[data-choose]").forEach(btn=>btn.addEventListener("click",()=>chooseProduct(btn.dataset.choose)));catalogGrid.querySelectorAll("[data-page]").forEach(btn=>btn.addEventListener("click",()=>openPage(btn.dataset.page)));if(window.lucide)lucide.createIcons()}
+    function fillModelOptions(){cakeModel.innerHTML=products.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}
+    function chooseProduct(id){const product=products.find(p=>p.id===id);if(!product)return;cakeModel.value=product.id;cakeType.value=product.type;openPage("order");updateEstimate();showToast(`${product.name} ajouté à votre demande`)}
+    function selectedProduct(){return products.find(p=>p.id===cakeModel.value)||products[0]}
+    function calculatePrice(){const type=cakeType.value;let price=basePrices[type]||25;const parts=parseInt(servings.value,10)||10;const tierCount=parseInt(tiers.value,10)||1;if(type!=="cupcakes"&&type!=="bento"){price+=Math.max(0,parts-10)*0.85}if(type==="cupcakes"){price+=Math.max(0,parts-10)*0.45}if(tierCount>1)price+=(tierCount-1)*18;if(finish.value==="theme")price+=8;if(finish.value==="premium")price+=18;if(finish.value==="luxury")price+=35;if(delivery.value==="yes")price+=8;return Math.max(18,Math.round(price))}
+    function dateStatus(){if(!eventDate.value){availability.className="availability";availability.innerHTML='<i data-lucide="calendar-clock"></i><div>Sélectionnez une date pour vérifier le délai de préparation.</div>';return}const today=new Date();today.setHours(0,0,0,0);const chosen=new Date(eventDate.value+"T00:00:00");const diff=Math.round((chosen-today)/86400000);if(diff<0){availability.className="availability bad";availability.innerHTML='<i data-lucide="alert-circle"></i><div>Cette date est déjà passée. Choisissez une nouvelle date.</div>'}else if(diff<2){availability.className="availability warn";availability.innerHTML='<i data-lucide="alert-triangle"></i><div>Délai très court. La disponibilité doit être confirmée rapidement.</div>'}else{availability.className="availability good";availability.innerHTML='<i data-lucide="check-circle"></i><div>Délai correct pour préparer votre commande avec soin.</div>'}if(window.lucide)lucide.createIcons()}
+    function formatDate(value){if(!value)return"Non précisée";const d=new Date(value+"T00:00:00");return d.toLocaleDateString("fr-FR",{weekday:"long",year:"numeric",month:"long",day:"numeric"})}
+    function buildMessage(){const product=selectedProduct();return `Bonjour Blessed Cake, je souhaite commander un gâteau.\n\nGâteau choisi : ${product.name}\nType : ${typeLabels[cakeType.value]||cakeType.value}\nDate : ${formatDate(eventDate.value)}\nHeure : ${eventTime.value||"Non précisée"}\nNom : ${personName.value||"Non précisé"}\nTéléphone : ${phone.value||"Non précisé"}\nÉvénement : ${eventName.value||"Non précisé"}\nÂge / mention : ${age.value||"Non précisé"}\nNombre de parts : ${servings.value}\nÉtages : ${tiers.value}\nFinition : ${finish.options[finish.selectedIndex].text}\nLivraison : ${delivery.value==="yes"?"Oui":"Non"}${delivery.value==="yes"?`\nAdresse : ${address.value||"Non précisée"}`:""}\nModifications souhaitées : ${themeText.value||"Aucune précision ajoutée"}\n\nPrix indicatif affiché : $${calculatePrice()}\nJe souhaite confirmer la disponibilité et le prix final.`}
+    function updateEstimate(){const product=selectedProduct();const amount=calculatePrice();estimateAmount.textContent=`$${amount}`;sumModel.textContent=product.name;sumType.textContent=typeLabels[cakeType.value]||cakeType.value;sumServings.textContent=`${servings.value} parts`;sumTiers.textContent=`${tiers.value} étage${tiers.value>1?"s":""}`;sumDelivery.textContent=delivery.value==="yes"?"Livraison":"Retrait";addressWrap.style.display=delivery.value==="yes"?"block":"none";previewMessage.textContent=buildMessage();dateStatus()}
+    [cakeModel,cakeType,eventDate,eventTime,personName,phone,eventName,age,servings,tiers,finish,delivery,address,themeText].forEach(el=>el.addEventListener("input",updateEstimate));
+    delivery.addEventListener("change",()=>{address.required=delivery.value==="yes";updateEstimate()});
+    searchInput.addEventListener("input",renderCatalog);
+    document.getElementById("quickStart").addEventListener("click",()=>{cakeType.value=document.getElementById("quickCake").value;eventDate.value=document.getElementById("quickDate").value;themeText.value=document.getElementById("quickTheme").value;openPage("order");updateEstimate()});
+    orderForm.addEventListener("submit",e=>{e.preventDefault();if(!orderForm.checkValidity()){orderForm.reportValidity();return}if(delivery.value==="yes"&&!address.value.trim()){address.focus();showToast("Ajoutez l’adresse de livraison");return}const url=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage())}`;window.open(url,"_blank","noopener")});
+    renderFilters();fillModelOptions();renderCatalog();updateEstimate();if(window.lucide)lucide.createIcons();
+  </script>
+</body>
+</html>
